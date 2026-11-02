@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# 环境变量（含敏感信息）
+.env
+
+# 本地运行数据（保留评测数据、演示文档和已落盘报告）
+data/chroma/
+logs/*
+!logs/online_eval_*.json
+!logs/online_eval_*.md
+!logs/optimization_comparison_*.md
+node_modules/
+EchoMindFrontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker 构建产物
+build-image*.sh
+
+# ChromaDB 本地数据
+*.sqlite3
+
+# 备份文件
+*~
+*.bak
+docker-compose(1).yml

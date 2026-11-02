@@ -1,0 +1,28 @@
+{
+  "_comment": "Harness-authored OpsMind entity fixture. Labels exercise IntentRecognizer._extract_entities; small scale means this is a regression check, not a population estimate.",
+  "_field_notes": {
+    "ticket_id": "INC/REQ/CHG/PRB ticket identifier or identifier following 工单号",
+    "service": "English service name immediately followed by 服务/系统/应用/平台",
+    "account": "account identifier following 账号/账户/用户/account",
+    "date": "relative Chinese date or full numeric date",
+    "error_code": "4xx/5xx style HTTP or error code"
+  },
+  "cases": [
+    {"id": "E01", "message": "工单号：INC-2026 到现在还没分派", "expected": {"ticket_id": ["INC-2026"], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E02", "message": "帮我查询 REQ-8899 的进度", "expected": {"ticket_id": ["REQ-8899"], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E03", "message": "工单号 chg_7788 需要升级", "expected": {"ticket_id": ["chg_7788"], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E04", "message": "ERP 系统全公司都无法访问", "expected": {"ticket_id": [], "service": ["ERP"], "account": [], "date": [], "error_code": []}},
+    {"id": "E05", "message": "CRM 应用响应特别慢", "expected": {"ticket_id": [], "service": ["CRM"], "account": [], "date": [], "error_code": []}},
+    {"id": "E06", "message": "账号 zhangsan 无法登录", "expected": {"ticket_id": [], "service": [], "account": ["zhangsan"], "date": [], "error_code": []}},
+    {"id": "E07", "message": "报错 500 了，页面打不开", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": ["500"]}},
+    {"id": "E08", "message": "登录一直报 401", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": ["401"]}},
+    {"id": "E09", "message": "错误码：403 怎么处理", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": ["403"]}},
+    {"id": "E10", "message": "HTTP 502 网关错误", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": ["502"]}},
+    {"id": "E11", "message": "VPN 服务今天开始连接失败", "expected": {"ticket_id": [], "service": ["VPN"], "account": [], "date": ["今天"], "error_code": []}},
+    {"id": "E12", "message": "账户 li.si@example.com 昨天出现异常登录", "expected": {"ticket_id": [], "service": [], "account": ["li.si@example.com"], "date": ["昨天"], "error_code": []}},
+    {"id": "E13", "message": "你好，我想咨询服务目录", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E14", "message": "工单号：#A-9988 申请数据库权限", "expected": {"ticket_id": ["A-9988"], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E15", "message": "工单号 ABC 这个到底怎么弄", "expected": {"ticket_id": [], "service": [], "account": [], "date": [], "error_code": []}},
+    {"id": "E16", "message": "GitLab 平台，账号 wangwu，2026-11-01 报 404", "expected": {"ticket_id": [], "service": ["GitLab"], "account": ["wangwu"], "date": ["2026-11-01"], "error_code": ["404"]}}
+  ]
+}

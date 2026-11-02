@@ -1,0 +1,116 @@
+[
+  {
+    "id": "D01",
+    "turns": ["OpsMind 的服务台办公时间怎么安排的", "那周末也能提交工单吗"],
+    "expected_agent": "service_desk",
+    "expected_intent": "query",
+    "tags": ["SERVICE_DESK路由"],
+    "note": "泛制度咨询，无需专业 Agent；expected_intent 以最后一轮诉求为准，回复只需解释演示服务流程"
+  },
+  {
+    "id": "D02",
+    "turns": ["哈喽，在吗", "想问下演示状态页上的“维护中”是什么意思"],
+    "expected_agent": "service_desk",
+    "expected_intent": "service_status",
+    "tags": ["SERVICE_DESK路由"],
+    "note": "先问候后咨询服务状态字段；回复应解释维护中，不应声称已查询实时服务"
+  },
+  {
+    "id": "D03",
+    "turns": ["报表系统最近特别慢", "清缓存以后打开一页还是要半分钟"],
+    "expected_agent": "incident",
+    "expected_intent": "performance_issue",
+    "tags": ["INCIDENT路由"],
+    "note": "持续响应缓慢且补充了耗时，归 performance_issue；合理回复应收集时段与影响范围"
+  },
+  {
+    "id": "D04",
+    "turns": ["一点开工单详情就报 500", "别的页面都正常"],
+    "expected_agent": "incident",
+    "expected_intent": "application_error",
+    "tags": ["INCIDENT路由"],
+    "note": "明确错误码且补充影响范围；回复应给出诊断信息清单，不要求真实重启工具"
+  },
+  {
+    "id": "D05",
+    "turns": ["我的账号一直提示密码错误", "用自助重置后也登不进去"],
+    "expected_agent": "access",
+    "expected_intent": "account_access",
+    "tags": ["ACCESS路由"],
+    "note": "账号认证故障；回复应核对认证方式和错误提示，不应声称已解锁账号"
+  },
+  {
+    "id": "D06",
+    "turns": ["我想申请项目库编辑权限", "需要主管和资源负责人审批对吗"],
+    "expected_agent": "access",
+    "expected_intent": "permission_request",
+    "tags": ["ACCESS路由"],
+    "note": "权限申请及审批规则确认；回复应说明演示最小权限流程，不要求真实审批调用"
+  },
+  {
+    "id": "D07",
+    "turns": ["你们这个处理结果我不接受", "叫服务台负责人来"],
+    "expected_agent": "escalation",
+    "expected_intent": "escalation",
+    "tags": ["ESCALATION路由"],
+    "note": "要求管理层介入，触发升级路由"
+  },
+  {
+    "id": "D08",
+    "turns": ["我账号被人盗了，机密文件正被下载，紧急！", "快帮我启动安全事件处置"],
+    "expected_agent": "escalation",
+    "expected_intent": "security_incident",
+    "tags": ["CRITICAL升级", "ESCALATION路由"],
+    "note": "含'紧急'触发 CRITICAL，升级覆盖意图路由；回复应建议保护证据并升级人工，不虚构封禁结果"
+  },
+  {
+    "id": "D09",
+    "turns": ["嗯……就是那个事儿", "你懂我意思吧"],
+    "expected_agent": "service_desk",
+    "expected_intent": "other",
+    "tags": ["应澄清"],
+    "note": "无业务实体与明确诉求，低置信度 other，应先澄清追问"
+  },
+  {
+    "id": "D10",
+    "turns": ["帮我弄一下", "就那个，之前那个"],
+    "expected_agent": "service_desk",
+    "expected_intent": "other",
+    "tags": ["应澄清", "指代"],
+    "note": "指代且无实体，不能强行路由到专业 Agent，应澄清"
+  },
+  {
+    "id": "D11",
+    "turns": ["业务系统一直报错，而且账号还突然登不上", "你们到底管不管"],
+    "expected_agent": "incident",
+    "expected_intent": "application_error",
+    "expected_supporting_agents": ["access"],
+    "tags": ["复合问题", "INCIDENT路由"],
+    "note": "应用故障加账号访问双诉求；主意图 application_error，主 incident、辅 access，末轮情绪不改变未解决主诉"
+  },
+  {
+    "id": "D12",
+    "turns": ["权限申请拖了半个月，提交页面还一直报错", "你们给个说法"],
+    "expected_agent": "access",
+    "expected_intent": "permission_request",
+    "expected_supporting_agents": ["incident"],
+    "tags": ["复合问题", "ACCESS路由"],
+    "note": "权限申请主诉叠加提交报错；主 access、辅 incident，回复不得要求调用不存在的审批或诊断工具"
+  },
+  {
+    "id": "D13",
+    "turns": ["别转了，直接给我接人工", "我等着"],
+    "expected_agent": "escalation",
+    "expected_intent": "human_handoff",
+    "tags": ["ESCALATION路由"],
+    "note": "明确要求转人工坐席，映射到 escalation Agent"
+  },
+  {
+    "id": "D14",
+    "turns": ["嗨，第一次来", "想问下服务台支持哪些咨询渠道"],
+    "expected_agent": "service_desk",
+    "expected_intent": "query",
+    "tags": ["SERVICE_DESK路由"],
+    "note": "开场问候后转为服务渠道咨询，最终意图为 query"
+  }
+]
